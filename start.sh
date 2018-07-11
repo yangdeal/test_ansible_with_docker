@@ -10,3 +10,5 @@ docker run -ti --rm --privileged -d --name ${DCKER_CONTAINER_NAME} -p 5000:22 -e
 cd ansible && ansible-playbook -i env/local_docker nginx.yml --private-key ssh/id_rsa
 
 docker stop ${DCKER_CONTAINER_NAME}
+
+#ansible-playbook -i env/local_docker nginx.yml --private-key ssh/id_rsa --extra-vars "nginx_port=99"
