@@ -1,0 +1,13 @@
+---
+
+- name: check configuration
+  command: "nginx -t -c /etc/nginx/nginx.conf"
+  register: result
+  changed_when: "result.rc != 0"
+  check_mode: no
+
+- name: reload nginx
+  service: name=nginx state=reloaded
+
+- name: check port
+  wait_for: port={{ nginx_port }}
